@@ -1,0 +1,585 @@
+{
+  "languages": ["zh-TW", "en", "ja"],
+  "meta": {
+    "ogImage": "assets/img/about/about_1000.png",
+    "siteUrl": "https://www.andyawd.com.tw/",
+    "ga": "G-0WCW564L2C"
+  },
+  "tree": [
+    { "d": 0, "label": "androidWebsite", "icon": "A", "iconBg": "#3ddc84", "bright": true },
+    { "d": 1, "label": "manifests", "icon": "▸", "iconBg": "#7a7e85" },
+    { "d": 1, "label": "kotlin", "icon": "▾", "iconBg": "#56a8f5" },
+    { "d": 2, "label": "tw.com.andyawd", "icon": "▾", "iconBg": "#7a7e85" },
+    { "d": 3, "file": "AboutMe.kt" },
+    { "d": 3, "file": "Contact.kt" },
+    { "d": 3, "label": "projects", "icon": "▾", "iconBg": "#7a7e85" },
+    { "d": 4, "file": "CostPerformanceCalculator.kt" },
+    { "d": 4, "file": "PirateHegemonyOnline.kt" },
+    { "d": 4, "file": "FastPass.kt" },
+    { "d": 4, "file": "SeeNote.kt" },
+    { "d": 1, "label": "res", "icon": "▸", "iconBg": "#7a7e85" },
+    { "d": 1, "label": "Gradle Scripts", "icon": "▾", "iconBg": "#7a7e85" },
+    { "d": 2, "file": "build.gradle.kts" }
+  ],
+  "files": {
+    "AboutMe.kt": {
+      "icon": "C",
+      "iconBg": "#c77dbb",
+      "breadcrumb": "androidWebsite > kotlin > tw.com.andyawd > AboutMe.kt",
+      "codeTemplate": "package tw.com.andyawd\n\n/**\n * ${about.doc}\n */\nclass AboutMe {\n\n    val name = \"${about.name}\"\n    val basedIn = \"${about.basedIn}\"\n\n    val roles = listOf(\n        \"${about.role1}\",\n        \"${about.role2}\",\n        \"${about.role3}\"\n    )\n\n    // ${about.comment1}\n    // ${about.comment2}\n    val currentFocus = \"${about.currentFocus}\"\n\n    val shipped = 3\n    val inProgress = 1\n\n    fun openToCollaborate(): Boolean = true\n}",
+      "preview": {
+        "titleKey": "about.previewTitle",
+        "images": [
+          { "url": "assets/img/about/about_1000.png", "altKey": "about.imgAlt" }
+        ],
+        "noteKeys": ["about.note"],
+        "links": [
+          { "url": "https://github.com/AndyAWD", "labelKey": "about.linkGithub" },
+          { "url": "https://www.linkedin.com/in/weiting-dai", "labelKey": "about.linkLinkedin" }
+        ]
+      }
+    },
+    "Contact.kt": {
+      "icon": "C",
+      "iconBg": "#c77dbb",
+      "breadcrumb": "androidWebsite > kotlin > tw.com.andyawd > Contact.kt",
+      "codeTemplate": "package tw.com.andyawd\n\nobject Contact {\n\n    // ${contact.comment}\n    const val EMAIL = \"hi@andyawd.com.tw\"\n\n    val social = mapOf(\n        \"GitHub\" to \"github.com/AndyAWD\",\n        \"LinkedIn\" to \"linkedin.com/in/weiting-dai\",\n        \"Facebook\" to \"facebook.com/anandydy529\"\n    )\n\n    val community = mapOf(\n        \"GDG Kaohsiung\" to \"linkedin.com/company/99178657\",\n        \"GDG Kaohsiung Group\" to \"facebook.com/groups/GDGKaohsiung\"\n    )\n\n    fun replyTime() = \"${contact.replyTime}\"\n}",
+      "preview": {
+        "titleKey": "contact.previewTitle",
+        "images": [],
+        "noteKeys": ["contact.note"],
+        "links": [
+          { "url": "https://github.com/AndyAWD", "labelKey": "contact.linkGithub" },
+          { "url": "https://www.linkedin.com/in/weiting-dai", "labelKey": "contact.linkLinkedin" },
+          { "url": "https://www.facebook.com/anandydy529", "labelKey": "contact.linkFacebook" },
+          { "url": "https://www.linkedin.com/company/99178657", "labelKey": "contact.linkGdgLinkedin" },
+          { "url": "https://www.facebook.com/groups/GDGKaohsiung", "labelKey": "contact.linkGdgFacebook" }
+        ]
+      }
+    },
+    "CostPerformanceCalculator.kt": {
+      "icon": "O",
+      "iconBg": "#b3ae60",
+      "breadcrumb": "androidWebsite > kotlin > tw.com.andyawd > projects > CostPerformanceCalculator.kt",
+      "codeTemplate": "package tw.com.andyawd.projects\n\nobject CostPerformanceCalculator : Project {\n\n    override val displayName = \"${cp.displayName}\"\n    override val tagline = \"${cp.tagline}\"\n\n    // ${cp.comment}\n    override val description = \"\"\"\n        ${cp.desc1}\n        ${cp.desc2}\n    \"\"\"\n\n    val storeRanking = listOf(\n        Rank(chart = \"${cp.chart1}\", place = 1),\n        Rank(chart = \"${cp.chart2}\", place = 1)\n    )\n\n    override val status = Status.PUBLISHED\n}",
+      "preview": {
+        "titleKey": "cp.previewTitle",
+        "images": [
+          { "url": "assets/img/costperformancecalculator/cp01.png", "altKey": "cp.imgAlt1" },
+          { "url": "assets/img/costperformancecalculator/cp02.png", "altKey": "cp.imgAlt2" }
+        ],
+        "noteKeys": ["cp.note"],
+        "links": [
+          { "url": "https://play.google.com/store/apps/details?id=andyawd.com.tw.costperformancecalculator2", "labelKey": "common.linkPlay" }
+        ]
+      }
+    },
+    "PirateHegemonyOnline.kt": {
+      "icon": "O",
+      "iconBg": "#b3ae60",
+      "breadcrumb": "androidWebsite > kotlin > tw.com.andyawd > projects > PirateHegemonyOnline.kt",
+      "codeTemplate": "package tw.com.andyawd.projects\n\nobject PirateHegemonyOnline : Project {\n\n    override val displayName = \"${ph.displayName}\"\n    override val tagline = \"${ph.tagline}\"\n\n    // ${ph.comment1}\n    // ${ph.comment2}\n    override val description = \"\"\"\n        ${ph.desc1}\n        ${ph.desc2}\n    \"\"\"\n\n    val storeRanking = listOf(\n        Rank(chart = \"${ph.chart1}\", place = 1),\n        Rank(chart = \"${ph.chart2}\", place = 19)\n    )\n\n    override val openSource = true\n    override val status = Status.PUBLISHED\n}",
+      "preview": {
+        "titleKey": "ph.previewTitle",
+        "images": [
+          { "url": "assets/img/piratehegemonyonline/ph01.png", "altKey": "ph.imgAlt1" },
+          { "url": "assets/img/piratehegemonyonline/ph03.png", "altKey": "ph.imgAlt2" }
+        ],
+        "noteKeys": ["ph.note"],
+        "links": [
+          { "url": "https://play.google.com/store/apps/details?id=tw.com.andyawd.piratehegemonyonline", "labelKey": "common.linkPlay" },
+          { "url": "https://github.com/AndyAWD/PirateHegemonyOnline", "labelKey": "common.linkSource" },
+          { "url": "https://www.youtube.com/watch?v=2PVRy0pgXnU", "labelKey": "ph.linkVideo" }
+        ]
+      }
+    },
+    "FastPass.kt": {
+      "icon": "O",
+      "iconBg": "#b3ae60",
+      "breadcrumb": "androidWebsite > kotlin > tw.com.andyawd > projects > FastPass.kt",
+      "codeTemplate": "package tw.com.andyawd.projects\n\nobject FastPass : Project {\n\n    override val displayName = \"${fp.displayName}\"\n    override val tagline = \"${fp.tagline}\"\n\n    // ${fp.comment}\n    override val description = \"\"\"\n        ${fp.desc1}\n        ${fp.desc2}\n    \"\"\"\n\n    val features = listOf(\n        \"${fp.feature1}\",\n        \"${fp.feature2}\",\n        \"${fp.feature3}\"\n    )\n\n    override val openSource = true\n    override val status = Status.PUBLISHED\n}",
+      "preview": {
+        "titleKey": "fp.previewTitle",
+        "images": [
+          { "url": "assets/img/fastpass/fp01.png", "altKey": "fp.imgAlt1" },
+          { "url": "assets/img/fastpass/fp04.png", "altKey": "fp.imgAlt2" }
+        ],
+        "noteKeys": ["fp.note"],
+        "links": [
+          { "url": "https://play.google.com/store/apps/details?id=tw.com.andyawd.fastpass", "labelKey": "common.linkPlay" },
+          { "url": "https://github.com/AndyAWD/FastPass", "labelKey": "common.linkSource" }
+        ]
+      }
+    },
+    "SeeNote.kt": {
+      "icon": "O",
+      "iconBg": "#b3ae60",
+      "breadcrumb": "androidWebsite > kotlin > tw.com.andyawd > projects > SeeNote.kt",
+      "codeTemplate": "package tw.com.andyawd.projects\n\nobject SeeNote : Project {\n\n    override val displayName = \"${sn.displayName}\"\n    override val tagline = \"${sn.tagline}\"\n\n    // ${sn.comment}\n    override val description = \"\"\"\n        ${sn.desc1}\n        ${sn.desc2}\n    \"\"\"\n\n    val accessibility = listOf(\n        \"${sn.a11y1}\",\n        \"${sn.a11y2}\",\n        \"${sn.a11y3}\",\n        \"${sn.a11y4}\",\n        \"${sn.a11y5}\"\n    )\n\n    override val openSource = true\n    override val status = Status.IN_PROGRESS  // ${sn.statusComment}\n}",
+      "preview": {
+        "titleKey": "sn.previewTitle",
+        "images": [],
+        "noteKeys": ["sn.note"],
+        "links": [
+          { "url": "https://github.com/AndyAWD/SeeNote", "labelKey": "common.linkSource" }
+        ]
+      }
+    },
+    "build.gradle.kts": {
+      "icon": "G",
+      "iconBg": "#3ddc84",
+      "breadcrumb": "androidWebsite > Gradle Scripts > build.gradle.kts",
+      "codeTemplate": "plugins {\n    id(\"com.android.application\")\n    id(\"org.jetbrains.kotlin.android\")\n}\n\nandroid {\n    namespace = \"tw.com.andyawd\"\n    compileSdk = 35\n\n    defaultConfig {\n        minSdk = 24\n        versionName = \"${gradle.versionName}\"\n    }\n}\n\ndependencies {\n    // ${gradle.comment1}\n    implementation(\"kotlin:coroutines\")\n    implementation(\"jetpack:compose\")\n    implementation(\"jetpack:room\")\n    implementation(\"jetpack:hilt\")\n    implementation(\"kotlin:multiplatform\")\n    implementation(\"android:accessibility-services\")\n\n    // ${gradle.comment2}\n    implementation(\"hobby:board-game-design\")\n    implementation(\"community:gdg-kaohsiung\")\n}",
+      "preview": null
+    }
+  },
+  "buildLog": [
+    { "time": "09:41:02", "textKey": "build.log1", "tone": "muted" },
+    { "time": "09:41:06", "textKey": "build.log2", "tone": "muted" },
+    { "time": "09:41:07", "textKey": "build.log3", "tone": "accent" },
+    { "time": "09:41:07", "textKey": "build.log4", "tone": "muted" },
+    { "time": "09:41:08", "textKey": "build.log5", "tone": "dim" }
+  ],
+  "hints": [
+    { "labelKey": "hint.search.label", "keyKey": "hint.search.key" },
+    { "labelKey": "hint.goto.label", "keyKey": "hint.goto.key" },
+    { "labelKey": "hint.recent.label", "keyKey": "hint.recent.key" },
+    { "labelKey": "hint.tree.label", "keyKey": "hint.tree.key" }
+  ],
+  "strings": {
+    "site.title": {
+      "zh-TW": "AndyAWD — Android Developer",
+      "en": "AndyAWD — Android Developer",
+      "ja": "AndyAWD — Android デベロッパー"
+    },
+    "site.description": {
+      "zh-TW": "戴維廷 / Andy，高雄的 Android Developer、GDG Kaohsiung Organizer、桌上遊戲設計者。記錄我製作的應用程式。",
+      "en": "Wei-Ting Dai / Andy — Android Developer in Kaohsiung, Taiwan, GDG Kaohsiung Organizer and board game designer. A record of the apps I build.",
+      "ja": "戴維廷 / Andy — 台湾・高雄の Android デベロッパー、GDG Kaohsiung オーガナイザー、ボードゲームデザイナー。制作したアプリの記録です。"
+    },
+    "sidebar.title": { "zh-TW": "Android", "en": "Android", "ja": "Android" },
+
+    "about.doc": {
+      "zh-TW": "您好，我是戴維廷 / Andy。",
+      "en": "Hi, I'm Wei-Ting Dai / Andy.",
+      "ja": "こんにちは、戴維廷 / Andy です。"
+    },
+    "about.name": {
+      "zh-TW": "戴維廷 / Andy",
+      "en": "Wei-Ting Dai / Andy",
+      "ja": "戴維廷 / Andy"
+    },
+    "about.basedIn": {
+      "zh-TW": "高雄, Taiwan",
+      "en": "Kaohsiung, Taiwan",
+      "ja": "台湾・高雄"
+    },
+    "about.role1": {
+      "zh-TW": "Android Developer",
+      "en": "Android Developer",
+      "ja": "Android デベロッパー"
+    },
+    "about.role2": {
+      "zh-TW": "GDG Kaohsiung Organizer",
+      "en": "GDG Kaohsiung Organizer",
+      "ja": "GDG Kaohsiung オーガナイザー"
+    },
+    "about.role3": {
+      "zh-TW": "桌上遊戲設計者",
+      "en": "Board Game Designer",
+      "ja": "ボードゲームデザイナー"
+    },
+    "about.comment1": {
+      "zh-TW": "目前正在開發 Android 免費輔具應用程式，",
+      "en": "Currently building free Android assistive apps —",
+      "ja": "現在、無料の Android 支援技術アプリを開発中です。"
+    },
+    "about.comment2": {
+      "zh-TW": "有相關需求歡迎與我連絡。",
+      "en": "get in touch if that's something you need.",
+      "ja": "関連するご相談はお気軽にご連絡ください。"
+    },
+    "about.currentFocus": {
+      "zh-TW": "Android 免費輔具應用程式",
+      "en": "Free Android assistive apps",
+      "ja": "無料の Android 支援技術アプリ"
+    },
+    "about.previewTitle": {
+      "zh-TW": "Preview — AboutMe",
+      "en": "Preview — AboutMe",
+      "ja": "Preview — AboutMe"
+    },
+    "about.imgAlt": { "zh-TW": "AndyAWD", "en": "AndyAWD", "ja": "AndyAWD" },
+    "about.note": {
+      "zh-TW": "我住在高雄，是 Android Developer、Google Developer Groups Kaohsiung Organizer，也是桌上遊戲設計者。目前正在開發 Android 免費輔具應用程式，有相關需求歡迎與我連絡。",
+      "en": "I live in Kaohsiung, Taiwan. I'm an Android Developer, a Google Developer Groups Kaohsiung Organizer, and a board game designer. Right now I'm building free Android assistive apps — feel free to reach out if that's something you need.",
+      "ja": "台湾の高雄に住んでいます。Android デベロッパー、Google Developer Groups Kaohsiung のオーガナイザー、そしてボードゲームデザイナーです。現在は無料の Android 支援技術アプリを開発しています。関連するご相談はお気軽にご連絡ください。"
+    },
+    "about.linkGithub": {
+      "zh-TW": "GitHub / AndyAWD",
+      "en": "GitHub / AndyAWD",
+      "ja": "GitHub / AndyAWD"
+    },
+    "about.linkLinkedin": {
+      "zh-TW": "LinkedIn / weiting-dai",
+      "en": "LinkedIn / weiting-dai",
+      "ja": "LinkedIn / weiting-dai"
+    },
+
+    "contact.comment": {
+      "zh-TW": "有相關需求歡迎與我連絡。",
+      "en": "Feel free to get in touch.",
+      "ja": "ご相談はお気軽にご連絡ください。"
+    },
+    "contact.replyTime": {
+      "zh-TW": "通常一到兩個工作天",
+      "en": "Usually within one or two business days",
+      "ja": "通常1〜2営業日以内"
+    },
+    "contact.previewTitle": {
+      "zh-TW": "Preview — Contact",
+      "en": "Preview — Contact",
+      "ja": "Preview — Contact"
+    },
+    "contact.note": {
+      "zh-TW": "有輔具、Android 開發或 GDG 社群相關的需求，歡迎直接來信。",
+      "en": "For anything about assistive technology, Android development, or the GDG community, just drop me an email.",
+      "ja": "支援技術、Android 開発、GDG コミュニティに関するご相談は、メールでお気軽にどうぞ。"
+    },
+    "contact.linkGithub": { "zh-TW": "GitHub", "en": "GitHub", "ja": "GitHub" },
+    "contact.linkLinkedin": { "zh-TW": "LinkedIn", "en": "LinkedIn", "ja": "LinkedIn" },
+    "contact.linkFacebook": { "zh-TW": "Facebook", "en": "Facebook", "ja": "Facebook" },
+    "contact.linkGdgLinkedin": {
+      "zh-TW": "GDG Kaohsiung — LinkedIn",
+      "en": "GDG Kaohsiung — LinkedIn",
+      "ja": "GDG Kaohsiung — LinkedIn"
+    },
+    "contact.linkGdgFacebook": {
+      "zh-TW": "GDG Kaohsiung — Facebook",
+      "en": "GDG Kaohsiung — Facebook",
+      "ja": "GDG Kaohsiung — Facebook"
+    },
+
+    "common.linkPlay": {
+      "zh-TW": "Google Play 下載",
+      "en": "Get it on Google Play",
+      "ja": "Google Play でダウンロード"
+    },
+    "common.linkSource": {
+      "zh-TW": "GitHub 原始碼",
+      "en": "Source on GitHub",
+      "ja": "GitHub のソースコード"
+    },
+
+    "cp.displayName": { "zh-TW": "CP計算機", "en": "CP Calculator", "ja": "CP計算機" },
+    "cp.tagline": {
+      "zh-TW": "簡易、方便、快速的價格比較器",
+      "en": "A simple, handy, fast price comparator",
+      "ja": "シンプルで手軽な価格比較ツール"
+    },
+    "cp.comment": {
+      "zh-TW": "為了方便比較價格設計。",
+      "en": "Built to make comparing prices painless.",
+      "ja": "価格を手軽に比べるために作りました。"
+    },
+    "cp.desc1": {
+      "zh-TW": "買東西的時候總要換算單價，",
+      "en": "Shopping always means doing unit-price math,",
+      "ja": "買い物のたびに単価を計算するのが面倒で、"
+    },
+    "cp.desc2": {
+      "zh-TW": "於是做了一個算得比腦袋快的工具。",
+      "en": "so I made a tool that does it faster than my head.",
+      "ja": "頭で計算するより速い道具を作りました。"
+    },
+    "cp.chart1": {
+      "zh-TW": "當紅遊戲或程式工具",
+      "en": "Trending Games & Apps",
+      "ja": "話題のゲーム・アプリ"
+    },
+    "cp.chart2": {
+      "zh-TW": "竄升速度最快",
+      "en": "Fastest Rising",
+      "ja": "急上昇ランキング"
+    },
+    "cp.previewTitle": {
+      "zh-TW": "Preview — CP計算機",
+      "en": "Preview — CP Calculator",
+      "ja": "Preview — CP計算機"
+    },
+    "cp.imgAlt1": {
+      "zh-TW": "CP計算機主頁面",
+      "en": "CP Calculator main screen",
+      "ja": "CP計算機のメイン画面"
+    },
+    "cp.imgAlt2": {
+      "zh-TW": "CP計算機排名",
+      "en": "CP Calculator store ranking",
+      "ja": "CP計算機のランキング"
+    },
+    "cp.note": {
+      "zh-TW": "為了方便比較價格而設計，簡易、方便、快速。",
+      "en": "Designed to make price comparison easy — simple, handy and fast.",
+      "ja": "価格の比較を手軽にするために設計しました。シンプルで、便利で、速い。"
+    },
+
+    "ph.displayName": {
+      "zh-TW": "海賊爭霸Online",
+      "en": "Pirate Hegemony Online",
+      "ja": "海賊争覇Online"
+    },
+    "ph.tagline": {
+      "zh-TW": "為《臺灣三部曲》集資而生的多人海戰",
+      "en": "A multiplayer naval battle made for the Taiwan Trilogy crowdfunding campaign",
+      "ja": "『台湾三部作』のクラウドファンディングのために作った多人数海戦ゲーム"
+    },
+    "ph.comment1": {
+      "zh-TW": "看了反正我很閒的影片，",
+      "en": "After watching a video by the channel Wanna Bad,",
+      "ja": "とある動画を見たのがきっかけで、"
+    },
+    "ph.comment2": {
+      "zh-TW": "幫魏導宣傳《臺灣三部曲》群眾集資而做的遊戲。",
+      "en": "I built this game to help promote Wei Te-Sheng's Taiwan Trilogy crowdfunding.",
+      "ja": "魏徳聖監督の『台湾三部作』のクラウドファンディングを応援するために作りました。"
+    },
+    "ph.desc1": {
+      "zh-TW": "一週之內從想法到上架，",
+      "en": "From idea to store listing in a single week —",
+      "ja": "アイデアから公開まで一週間。"
+    },
+    "ph.desc2": {
+      "zh-TW": "證明熱情比排程表更會跑編譯。",
+      "en": "proof that passion compiles faster than any schedule.",
+      "ja": "情熱はスケジュール表よりも速くビルドが通る。"
+    },
+    "ph.chart1": {
+      "zh-TW": "當紅遊戲或程式工具",
+      "en": "Trending Games & Apps",
+      "ja": "話題のゲーム・アプリ"
+    },
+    "ph.chart2": {
+      "zh-TW": "熱門免費項目",
+      "en": "Top Free",
+      "ja": "無料人気ランキング"
+    },
+    "ph.previewTitle": {
+      "zh-TW": "Preview — 海賊爭霸Online",
+      "en": "Preview — Pirate Hegemony Online",
+      "ja": "Preview — 海賊争覇Online"
+    },
+    "ph.imgAlt1": {
+      "zh-TW": "海賊爭霸Online主頁面",
+      "en": "Pirate Hegemony Online main screen",
+      "ja": "海賊争覇Online のメイン画面"
+    },
+    "ph.imgAlt2": { "zh-TW": "排名 #1", "en": "Ranked #1", "ja": "ランキング1位" },
+    "ph.note": {
+      "zh-TW": "看了反正我很閒的影片，幫魏導宣傳《臺灣三部曲》群眾集資而做的遊戲。",
+      "en": "After watching a video from the channel Wanna Bad, I built this game to help promote director Wei Te-Sheng's Taiwan Trilogy crowdfunding campaign.",
+      "ja": "とある動画を見たのをきっかけに、魏徳聖監督の『台湾三部作』クラウドファンディングを応援するために作ったゲームです。"
+    },
+    "ph.linkVideo": {
+      "zh-TW": "遊戲介紹影片",
+      "en": "Gameplay video",
+      "ja": "ゲーム紹介動画"
+    },
+
+    "fp.displayName": { "zh-TW": "快速實聯", "en": "FastPass", "ja": "クイック実聯" },
+    "fp.tagline": {
+      "zh-TW": "掃一次 QR Code，簡訊自己寄出去",
+      "en": "Scan the QR code once, the SMS sends itself",
+      "ja": "QRコードを一度スキャンすれば、SMSは自動で送信"
+    },
+    "fp.comment": {
+      "zh-TW": "有次手上一堆東西，要單手操作真的不太容易。",
+      "en": "One day my hands were full and one-handed use was near impossible.",
+      "ja": "両手が塞がっていて、片手操作が本当に大変だった日がありました。"
+    },
+    "fp.desc1": {
+      "zh-TW": "單手可以完成的事，",
+      "en": "If one hand can finish the job,",
+      "ja": "片手でできることに、"
+    },
+    "fp.desc2": {
+      "zh-TW": "就不該需要第二隻手。",
+      "en": "it shouldn't need a second one.",
+      "ja": "もう一方の手は要らないはずです。"
+    },
+    "fp.feature1": {
+      "zh-TW": "掃描後自動送出簡訊",
+      "en": "Sends the SMS automatically after scanning",
+      "ja": "スキャン後に SMS を自動送信"
+    },
+    "fp.feature2": {
+      "zh-TW": "自訂顏色主題",
+      "en": "Custom color themes",
+      "ja": "カラーテーマのカスタマイズ"
+    },
+    "fp.feature3": {
+      "zh-TW": "無廣告、無追蹤",
+      "en": "No ads, no tracking",
+      "ja": "広告なし・トラッキングなし"
+    },
+    "fp.previewTitle": {
+      "zh-TW": "Preview — 快速實聯",
+      "en": "Preview — FastPass",
+      "ja": "Preview — クイック実聯"
+    },
+    "fp.imgAlt1": {
+      "zh-TW": "快速實聯掃瞄頁",
+      "en": "FastPass scanning screen",
+      "ja": "クイック実聯のスキャン画面"
+    },
+    "fp.imgAlt2": {
+      "zh-TW": "快速實聯顏色主題頁",
+      "en": "FastPass color theme screen",
+      "ja": "クイック実聯のカラーテーマ画面"
+    },
+    "fp.note": {
+      "zh-TW": "有次手上一堆東西，要單手操作真的不太容易，於是寫了這個掃描 QR Code 後自動寄出簡訊的程式。",
+      "en": "One day my hands were full and using the phone one-handed was nearly impossible, so I wrote this app that scans a QR code and sends the SMS for you.",
+      "ja": "両手が塞がっていて片手操作が難しかった日に、QRコードを読み取ると SMS を自動で送ってくれるアプリを作りました。"
+    },
+
+    "sn.displayName": { "zh-TW": "看見筆記", "en": "SeeNote", "ja": "見えるノート" },
+    "sn.tagline": {
+      "zh-TW": "為看不清楚的人寫的筆記本",
+      "en": "A notebook written for people who can't see clearly",
+      "ja": "見えにくい人のために書いたノートアプリ"
+    },
+    "sn.comment": {
+      "zh-TW": "為了協助有視力障礙的家人設計的筆記應用程式。",
+      "en": "A note app designed to help a family member with a visual impairment.",
+      "ja": "視覚に障がいのある家族のために設計したノートアプリです。"
+    },
+    "sn.desc1": {
+      "zh-TW": "無障礙不是功能清單上的一列，",
+      "en": "Accessibility isn't a line on the feature list —",
+      "ja": "アクセシビリティは機能一覧の一行ではなく、"
+    },
+    "sn.desc2": {
+      "zh-TW": "它是這個 App 存在的理由。",
+      "en": "it's the reason this app exists.",
+      "ja": "このアプリが存在する理由そのものです。"
+    },
+    "sn.a11y1": { "zh-TW": "手勢放大", "en": "Pinch to zoom", "ja": "ジェスチャーで拡大" },
+    "sn.a11y2": { "zh-TW": "一鍵朗讀", "en": "One-tap read aloud", "ja": "ワンタップ読み上げ" },
+    "sn.a11y3": {
+      "zh-TW": "自訂文字與背景顏色",
+      "en": "Custom text and background colors",
+      "ja": "文字色と背景色のカスタマイズ"
+    },
+    "sn.a11y4": {
+      "zh-TW": "Markdown 語法支援",
+      "en": "Markdown support",
+      "ja": "Markdown 記法に対応"
+    },
+    "sn.a11y5": {
+      "zh-TW": "HackMD 雲端備份",
+      "en": "HackMD cloud backup",
+      "ja": "HackMD によるクラウドバックアップ"
+    },
+    "sn.statusComment": {
+      "zh-TW": "目前製作中",
+      "en": "still in progress",
+      "ja": "現在開発中"
+    },
+    "sn.previewTitle": {
+      "zh-TW": "Preview — 看見筆記",
+      "en": "Preview — SeeNote",
+      "ja": "Preview — 見えるノート"
+    },
+    "sn.note": {
+      "zh-TW": "為了協助有視力障礙的家人設計的筆記應用程式：手勢放大、一鍵朗讀、自訂文字與背景顏色，結合 HackMD 雲端備份，支援 Markdown。目前製作中。",
+      "en": "A note app designed to help a family member with a visual impairment: pinch to zoom, one-tap read aloud, custom text and background colors, HackMD cloud backup and Markdown support. Still in progress.",
+      "ja": "視覚に障がいのある家族を支えるために設計したノートアプリです。ジェスチャーによる拡大、ワンタップ読み上げ、文字色と背景色のカスタマイズ、HackMD によるクラウドバックアップ、Markdown 対応。現在開発中です。"
+    },
+
+    "gradle.versionName": {
+      "zh-TW": "十年 Android，還在寫",
+      "en": "Ten years of Android, still writing",
+      "ja": "Android 十年、まだ書いてる"
+    },
+    "gradle.comment1": {
+      "zh-TW": "每天都在用的東西",
+      "en": "What I use every day",
+      "ja": "毎日使っているもの"
+    },
+    "gradle.comment2": {
+      "zh-TW": "不寫程式的時候",
+      "en": "When I'm not writing code",
+      "ja": "コードを書いていないとき"
+    },
+
+    "build.log1": {
+      "zh-TW": "> Task :androidWebsite:compileKotlin",
+      "en": "> Task :androidWebsite:compileKotlin",
+      "ja": "> Task :androidWebsite:compileKotlin"
+    },
+    "build.log2": {
+      "zh-TW": "> Task :androidWebsite:assembleDebug",
+      "en": "> Task :androidWebsite:assembleDebug",
+      "ja": "> Task :androidWebsite:assembleDebug"
+    },
+    "build.log3": {
+      "zh-TW": "BUILD SUCCESSFUL in 5s — 戴維廷 / Andy · 高雄 · Android Developer",
+      "en": "BUILD SUCCESSFUL in 5s — Wei-Ting Dai / Andy · Kaohsiung · Android Developer",
+      "ja": "BUILD SUCCESSFUL in 5s — 戴維廷 / Andy · 高雄 · Android デベロッパー"
+    },
+    "build.log4": {
+      "zh-TW": "3 projects shipped, 1 in progress · GDG Kaohsiung Organizer",
+      "en": "3 projects shipped, 1 in progress · GDG Kaohsiung Organizer",
+      "ja": "3 projects shipped, 1 in progress · GDG Kaohsiung Organizer"
+    },
+    "build.log5": {
+      "zh-TW": "// 目前正在開發 Android 免費輔具應用程式，有相關需求歡迎與我連絡。",
+      "en": "// Currently building free Android assistive apps — get in touch if that's something you need.",
+      "ja": "// 現在、無料の Android 支援技術アプリを開発中です。ご相談はお気軽にどうぞ。"
+    },
+
+    "hint.search.label": {
+      "zh-TW": "Search Everywhere",
+      "en": "Search Everywhere",
+      "ja": "Search Everywhere"
+    },
+    "hint.search.key": { "zh-TW": "Double Shift", "en": "Double Shift", "ja": "Double Shift" },
+    "hint.goto.label": { "zh-TW": "Go to File", "en": "Go to File", "ja": "Go to File" },
+    "hint.goto.key": { "zh-TW": "Ctrl+Shift+N", "en": "Ctrl+Shift+N", "ja": "Ctrl+Shift+N" },
+    "hint.recent.label": { "zh-TW": "Recent Files", "en": "Recent Files", "ja": "Recent Files" },
+    "hint.recent.key": { "zh-TW": "Ctrl+E", "en": "Ctrl+E", "ja": "Ctrl+E" },
+    "hint.tree.label": {
+      "zh-TW": "Open a file from the tree",
+      "en": "Open a file from the tree",
+      "ja": "Open a file from the tree"
+    },
+    "hint.tree.key": { "zh-TW": "← 左邊", "en": "← on the left", "ja": "← 左側" },
+
+    "a11y.skipToCode": {
+      "zh-TW": "跳到程式碼區",
+      "en": "Skip to code",
+      "ja": "コード領域へスキップ"
+    },
+    "a11y.fileTree": { "zh-TW": "專案檔案樹", "en": "Project file tree", "ja": "プロジェクトのファイルツリー" },
+    "a11y.openFiles": { "zh-TW": "已開啟的檔案", "en": "Open files", "ja": "開いているファイル" },
+    "a11y.closeTab": { "zh-TW": "關閉分頁", "en": "Close tab", "ja": "タブを閉じる" },
+    "a11y.toggleSidebar": {
+      "zh-TW": "開啟或關閉檔案樹",
+      "en": "Toggle file tree",
+      "ja": "ファイルツリーの表示切り替え"
+    },
+    "a11y.toggleTheme": {
+      "zh-TW": "切換亮色／暗色主題",
+      "en": "Toggle light / dark theme",
+      "ja": "ライト／ダークテーマの切り替え"
+    },
+    "a11y.toggleBuild": {
+      "zh-TW": "開啟或關閉 Build 面板",
+      "en": "Toggle build panel",
+      "ja": "Build パネルの表示切り替え"
+    },
+    "a11y.language": { "zh-TW": "選擇語言", "en": "Select language", "ja": "言語を選択" },
+    "a11y.codeEditor": { "zh-TW": "程式碼內容", "en": "Code content", "ja": "コードの内容" },
+    "a11y.previewPanel": { "zh-TW": "預覽面板", "en": "Preview panel", "ja": "プレビューパネル" }
+  }
+}

@@ -1,0 +1,98 @@
+/* ==========================================================================
+   AndyAWD — Android Studio 風格個人網站
+   配色與尺寸依照設計稿（Darcula），亮色版依 IntelliJ IDEA Light 補齊。
+   ========================================================================== */
+
+/* --- 字型（自行託管，見 assets/fonts/fonts.css） --------------------------- */
+
+@import url('../assets/fonts/fonts.css');
+
+/* --- 色彩語彙：暗色（Darcula，設計稿原始值） ------------------------------ */
+
+:root {
+  --bg: #1e1f22;
+  --panel: #2b2d30;
+  --border: #393b40;
+  --hover: #393b40;
+  --selected: #2e436e;
+  --fg: #bcbec4;
+  --fg-bright: #dfe1e5;
+  --fg-dim: #7a7e85;
+  --fg-note: #9da0a8;
+  --fg-gutter: #4b5059;
+  --link: #56a8f5;
+  --link-hover: #8cc2fa;
+  --scrollbar: #4a4d51;
+  --shadow: rgba(0, 0, 0, .5);
+  --overlay: rgba(0, 0, 0, .55);
+
+  --syn-kw: #cf8e6d;
+  --syn-str: #6aab73;
+  --syn-cm: #7a7e85;
+  --syn-num: #2aacb8;
+  --syn-fn: #56a8f5;
+  --syn-an: #b3ae60;
+  --syn-ty: #c77dbb;
+
+  /* 由 JS 依 ui.json 覆寫 */
+  --accent: #3ddc84;
+  --accent-hover: #6ff0aa;
+  --font-size: 13px;
+  --sidebar-width: 268px;
+  --preview-width: 340px;
+
+  /* 版面固定尺寸（設計稿） */
+  --topbar-h: 34px;
+  --activity-w: 40px;
+  --tabbar-h: 32px;
+  --crumb-h: 26px;
+  --build-h: 132px;
+  --statusbar-h: 24px;
+  --row-h: 22px;
+
+  --font-mono: 'JetBrains Mono', 'Noto Sans TC', 'Noto Sans JP', 'Microsoft JhengHei',
+    'PingFang TC', ui-monospace, monospace;
+  --font-sans: 'Noto Sans TC', 'Noto Sans JP', 'Microsoft JhengHei', 'PingFang TC',
+    system-ui, sans-serif;
+
+  color-scheme: dark;
+}
+
+/* 日文優先使用 Noto Sans JP，漢字字形才會是日文寫法 */
+html[lang='ja'] {
+  --font-mono: 'JetBrains Mono', 'Noto Sans JP', 'Noto Sans TC', 'Yu Gothic',
+    'Hiragino Sans', ui-monospace, monospace;
+  --font-sans: 'Noto Sans JP', 'Noto Sans TC', 'Yu Gothic', 'Hiragino Sans',
+    system-ui, sans-serif;
+}
+
+/* --- 色彩語彙：亮色（IntelliJ IDEA Light） -------------------------------- */
+
+:root[data-theme='light'] {
+  --bg: #ffffff;
+  --panel: #f7f8fa;
+  --border: #ebecf0;
+  --hover: #dfe1e5;
+  --selected: #d4e2ff;
+  --fg: #2b2d30;
+  --fg-bright: #000000;
+  --fg-dim: #6c707e;
+  --fg-note: #494b57;
+  --fg-gutter: #adadad;
+  --link: #2470b3;
+  --link-hover: #16528a;
+  --scrollbar: #c9ccd6;
+  --shadow: rgba(0, 0, 0, .18);
+  --overlay: rgba(0, 0, 0, .3);
+
+  /* 註解與註解標記比 IntelliJ Light 原值再壓深一階，讓白底上的對比達 WCAG AA */
+  --syn-kw: #0033b3;
+  --syn-str: #067d17;
+  --syn-cm: #727272;
+  --syn-num: #1750eb;
+  --syn-fn: #00627a;
+  --syn-an: #856f00;
+  --syn-ty: #871094;
+
+  color-scheme: light;
+}

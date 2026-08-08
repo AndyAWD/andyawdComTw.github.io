@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AndyAWD — Android Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #1e1f22; overflow: hidden; }
+  * { box-sizing: border-box; }
+  a { color: #56a8f5; text-decoration: none; }
+  a:hover { color: #8cc2fa; text-decoration: underline; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: #4a4d51; border-radius: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+</style>
+</helmet>
+<div style="height: 100vh; width: 100%; display: flex; flex-direction: column; background: #1e1f22; color: #bcbec4; font-family: 'JetBrains Mono', 'Noto Sans TC', monospace; font-size: 13px; overflow: hidden;">
+
+  <div style="display: flex; align-items: center; gap: 14px; height: 34px; padding: 0 10px; background: #2b2d30; border-bottom: 1px solid #1e1f22; flex-shrink: 0;">
+    <div style="width: 16px; height: 16px; border-radius: 4px; background: #3ddc84; flex-shrink: 0;"></div>
+    <div style="display: flex; gap: 12px; color: #bcbec4; font-size: 12px;">
+      <sc-for list="{{ menus }}" as="m" hint-placeholder-count="8">
+        <span style="padding: 2px 4px; border-radius: 4px; cursor: default;" style-hover="background: #393b40;">{{ m }}</span>
+      </sc-for>
+    </div>
+    <div style="flex: 1;"></div>
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 12px;">
+      <span style="display: flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 5px; background: #393b40; color: #dfe1e5;">
+        <span style="width: 8px; height: 8px; border-radius: 2px; background: #3ddc84;"></span>AndyAWD
+      </span>
+      <span style="color: #7a7e85;">⑂ main</span>
+      <span style="color: #7a7e85; margin-left: 6px;">Pixel 9 · API 35</span>
+      <span style="color: #3ddc84; font-size: 14px; cursor: pointer;" style-hover="color: #6ff0aa;">▶</span>
+      <span style="color: #7a7e85; font-size: 14px; cursor: pointer;" style-hover="color: #bcbec4;">⛭</span>
+    </div>
+  </div>
+
+  <div style="flex: 1; display: flex; min-height: 0;">
+
+    <div style="width: 40px; background: #2b2d30; border-right: 1px solid #393b40; display: flex; flex-direction: column; align-items: center; padding: 8px 0; gap: 14px; flex-shrink: 0; color: #7a7e85; font-size: 15px;">
+      <span style="color: #cfd1d5;">▤</span>
+      <span>⑂</span>
+      <span>⌕</span>
+      <span>◈</span>
+      <div style="flex: 1;"></div>
+      <span>▶</span>
+      <span>⚑</span>
+    </div>
+
+    <div style="width: 268px; background: #2b2d30; border-right: 1px solid #393b40; display: flex; flex-direction: column; flex-shrink: 0; min-height: 0;">
+      <div style="display: flex; align-items: center; height: 30px; padding: 0 10px; font-size: 12px; color: #dfe1e5; letter-spacing: 0.3px;">
+        Android <span style="color: #7a7e85; margin-left: 4px;">⌄</span>
+        <div style="flex: 1;"></div>
+        <span style="color: #7a7e85;">⋮</span>
+      </div>
+      <div style="flex: 1; overflow-y: auto; padding-bottom: 12px;">
+        <sc-for list="{{ tree }}" as="node" hint-placeholder-count="14">
+          <div style="display: flex; align-items: center; gap: 6px; height: 22px; padding-right: 8px; padding-left: {{ node.pad }}; cursor: default; background: {{ node.bg }};" style-hover="background: #393b40;" onClick="{{ node.onClick }}">
+            <span style="width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: #1e1f22; background: {{ node.iconBg }};">{{ node.icon }}</span>
+            <span style="font-size: 12.5px; color: {{ node.color }}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ node.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; min-width: 0; min-height: 0;">
+
+      <div style="display: flex; align-items: stretch; height: 32px; background: #2b2d30; border-bottom: 1px solid #393b40; flex-shrink: 0; overflow-x: auto;">
+        <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="2">
+          <div style="display: flex; align-items: center; gap: 8px; padding: 0 10px; font-size: 12.5px; cursor: default; white-space: nowrap; color: {{ tab.color }}; background: {{ tab.bg }}; border-bottom: 2px solid {{ tab.underline }};" onClick="{{ tab.onSelect }}">
+            <span style="width: 12px; height: 12px; border-radius: 3px; background: {{ tab.iconBg }}; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 700; color: #1e1f22;">{{ tab.icon }}</span>
+            {{ tab.label }}
+            <span style="color: #7a7e85; font-size: 13px; padding: 0 2px;" style-hover="color: #dfe1e5;" onClick="{{ tab.onClose }}">×</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="flex: 1; display: flex; min-height: 0;">
+
+        <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding-left: 12%; gap: 22px; color: #7a7e85;">
+            <sc-for list="{{ hints }}" as="h" hint-placeholder-count="4">
+              <div style="display: flex; gap: 18px; font-size: 17px;">
+                <span style="color: #7a7e85; width: 240px;">{{ h.label }}</span>
+                <span style="color: #bcbec4;">{{ h.key }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ hasFile }}" hint-placeholder-val="{{ true }}">
+          <div style="flex: 1; display: flex; flex-direction: column; min-width: 0; min-height: 0;">
+            <div style="display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 12px; font-size: 11.5px; color: #7a7e85; background: #1e1f22; border-bottom: 1px solid #2b2d30; flex-shrink: 0;">{{ breadcrumb }}</div>
+            <div style="flex: 1; overflow: auto; background: #1e1f22; padding: 8px 0 40px;">
+              <sc-for list="{{ lines }}" as="line" hint-placeholder-count="20">
+                <div style="display: flex; align-items: flex-start; line-height: 1.65; font-size: {{ fontSize }};">
+                  <span style="width: 52px; flex-shrink: 0; text-align: right; padding-right: 14px; color: #4b5059; user-select: none;">{{ line.n }}</span>
+                  <span style="white-space: pre-wrap; padding-right: 24px;">
+                    <sc-for list="{{ line.tokens }}" as="tk" hint-placeholder-count="3">
+                      <span style="color: {{ tk.c }};">{{ tk.t }}</span>
+                    </sc-for>
+                  </span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ showPreviewPane }}" hint-placeholder-val="{{ false }}">
+          <div style="width: 340px; flex-shrink: 0; background: #2b2d30; border-left: 1px solid #393b40; display: flex; flex-direction: column; min-height: 0;">
+            <div style="display: flex; align-items: center; height: 28px; padding: 0 12px; font-size: 11.5px; color: #dfe1e5; border-bottom: 1px solid #393b40; letter-spacing: 0.4px;">{{ previewTitle }}</div>
+            <div style="flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 16px;">
+              <sc-for list="{{ previewImages }}" as="img" hint-placeholder-count="2">
+                <img src="{{ img.url }}" alt="{{ img.alt }}" style="width: 100%; border-radius: 10px; border: 1px solid #393b40; display: block; background: #1e1f22;" />
+              </sc-for>
+              <sc-for list="{{ previewNotes }}" as="note" hint-placeholder-count="1">
+                <div style="font-family: 'Noto Sans TC', sans-serif; font-size: 12.5px; line-height: 1.8; color: #9da0a8; text-wrap: pretty;">{{ note }}</div>
+              </sc-for>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <sc-for list="{{ previewLinks }}" as="lnk" hint-placeholder-count="2">
+                  <a href="{{ lnk.url }}" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; background: #1e1f22; border: 1px solid #393b40; color: #bcbec4; font-size: 12px; text-decoration: none;" style-hover="border-color: #3ddc84; color: #dfe1e5;">
+                    <span style="width: 7px; height: 7px; border-radius: 50%; background: #3ddc84; flex-shrink: 0;"></span>{{ lnk.label }}
+                  </a>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <sc-if value="{{ buildOpen }}" hint-placeholder-val="{{ true }}">
+        <div style="height: 132px; flex-shrink: 0; background: #1e1f22; border-top: 1px solid #393b40; display: flex; flex-direction: column;">
+          <div style="display: flex; align-items: center; gap: 16px; height: 28px; padding: 0 12px; font-size: 11.5px; color: #7a7e85; border-bottom: 1px solid #2b2d30;">
+            <span style="color: #dfe1e5; border-bottom: 2px solid #3ddc84; height: 100%; display: flex; align-items: center;">Build</span>
+            <span>Logcat</span>
+            <span>Terminal</span>
+            <div style="flex: 1;"></div>
+            <span style="cursor: pointer;" style-hover="color: #dfe1e5;" onClick="{{ toggleBuild }}">—</span>
+          </div>
+          <div style="flex: 1; overflow-y: auto; padding: 8px 12px; display: flex; flex-direction: column; gap: 3px;">
+            <sc-for list="{{ buildLog }}" as="log" hint-placeholder-count="5">
+              <div style="display: flex; gap: 12px; font-size: 12px; line-height: 1.5;">
+                <span style="color: #4b5059; width: 62px; flex-shrink: 0;">{{ log.time }}</span>
+                <span style="color: {{ log.color }};">{{ log.text }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 16px; height: 24px; padding: 0 12px; background: #2b2d30; border-top: 1px solid #393b40; font-size: 11px; color: #7a7e85; flex-shrink: 0;">
+    <span style="cursor: pointer;" style-hover="color: #dfe1e5;" onClick="{{ toggleBuild }}">▤ Build</span>
+    <span>AndyAWD</span>
+    <div style="flex: 1;"></div>
+    <span>{{ caret }}</span>
+    <span>UTF-8</span>
+    <span>Kotlin</span>
+    <span>⑂ main</span>
+    <span style="padding: 1px 6px; border-radius: 4px; background: #393b40;">1425 of 3500M</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#3ddc84&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#3ddc84&quot;,&quot;#56a8f5&quot;,&quot;#c77dbb&quot;,&quot;#b3ae60&quot;]},&quot;showPreview&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showBuildPanel&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;fontSize&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:13,&quot;min&quot;:11,&quot;max&quot;:18,&quot;tsType&quot;:&quot;number&quot;}}">
+const C = { kw: '#cf8e6d', str: '#6aab73', cm: '#7a7e85', num: '#2aacb8', fn: '#56a8f5', an: '#b3ae60', ty: '#c77dbb', def: '#bcbec4' };
+
+const KW = 'package|import|class|object|val|var|fun|override|private|internal|return|true|false|null|data|const|listOf|mapOf|if|else|when|is|in|suspend|companion|by|lazy|enum|interface|this|it';
+
+const FILES = {
+  'AboutMe.kt': {
+    icon: 'C', iconBg: '#c77dbb', crumb: 'androidWebsite > kotlin > tw.com.andyawd > AboutMe.kt',
+    preview: {
+      title: 'Preview — AboutMe',
+      images: [{ url: 'https://www.andyawd.com.tw/assets/img/about/about_1000.png', alt: 'AndyAWD' }],
+      notes: ['我住在高雄，是 Android Developer、Google Developer Groups Kaohsiung Organizer，也是桌上遊戲設計者。目前正在開發 Android 免費輔具應用程式，有相關需求歡迎與我連絡。'],
+      links: [
+        { label: 'GitHub / AndyAWD', url: 'https://github.com/AndyAWD' },
+        { label: 'LinkedIn / weiting-dai', url: 'https://www.linkedin.com/in/weiting-dai' }
+      ]
+    },
+    code: `package tw.com.andyawd
+
+/**
+ * 您好，我是戴維廷 / Andy。
+ */
+class AboutMe {
+
+    val name = "戴維廷 / Andy"
+    val basedIn = "高雄, Taiwan"
+
+    val roles = listOf(
+        "Android Developer",
+        "GDG Kaohsiung Organizer",
+        "桌上遊戲設計者"
+    )
+
+    // 目前正在開發 Android 免費輔具應用程式，
+    // 有相關需求歡迎與我連絡。
+    val currentFocus = "Android 免費輔具應用程式"
+
+    val shipped = 3
+    val inProgress = 1
+
+    fun openToCollaborate(): Boolean = true
+}`
+  },
+  'CostPerformanceCalculator.kt': {
+    icon: 'O', iconBg: '#b3ae60', crumb: 'androidWebsite > kotlin > tw.com.andyawd > projects > CostPerformanceCalculator.kt',
+    preview: {
+      title: 'Preview — CP計算機',
+      images: [
+        { url: 'https://www.andyawd.com.tw/assets/img/costperformancecalculator/cp01.png', alt: 'CP計算機主頁面' },
+        { url: 'https://www.andyawd.com.tw/assets/img/costperformancecalculator/cp02.png', alt: 'CP計算機排名' }
+      ],
+      notes: ['為了方便比較價格而設計，簡易、方便、快速。'],
+      links: [{ label: 'Google Play 下載', url: 'https://play.google.com/store/apps/details?id=andyawd.com.tw.costperformancecalculator2' }]
+    },
+    code: `package tw.com.andyawd.projects
+
+object CostPerformanceCalculator : Project {
+
+    override val displayName = "CP計算機"
+    override val tagline = "簡易、方便、快速的價格比較器"
+
+    // 為了方便比較價格設計。
+    override val description = """
+        買東西的時候總要換算單價，
+        於是做了一個算得比腦袋快的工具。
+    """
+
+    val storeRanking = listOf(
+        Rank(chart = "當紅遊戲或程式工具", place = 1),
+        Rank(chart = "竄升速度最快", place = 1)
+    )
+
+    override val status = Status.PUBLISHED
+}`
+  },
+  'PirateHegemonyOnline.kt': {
+    icon: 'O', iconBg: '#b3ae60', crumb: 'androidWebsite > kotlin > tw.com.andyawd > projects > PirateHegemonyOnline.kt',
+    preview: {
+      title: 'Preview — 海賊爭霸Online',
+      images: [
+        { url: 'https://www.andyawd.com.tw/assets/img/piratehegemonyonline/ph01.png', alt: '海賊爭霸Online主頁面' },
+        { url: 'https://www.andyawd.com.tw/assets/img/piratehegemonyonline/ph03.png', alt: '排名 #1' }
+      ],
+      notes: ['看了反正我很閒的影片，幫魏導宣傳《臺灣三部曲》群眾集資而做的遊戲。'],
+      links: [
+        { label: 'Google Play 下載', url: 'https://play.google.com/store/apps/details?id=tw.com.andyawd.piratehegemonyonline' },
+        { label: 'GitHub 原始碼', url: 'https://github.com/AndyAWD/PirateHegemonyOnline' },
+        { label: '遊戲介紹影片', url: 'https://www.youtube.com/watch?v=2PVRy0pgXnU' }
+      ]
+    },
+    code: `package tw.com.andyawd.projects
+
+object PirateHegemonyOnline : Project {
+
+    override val displayName = "海賊爭霸Online"
+    override val tagline = "為《臺灣三部曲》集資而生的多人海戰"
+
+    // 看了反正我很閒的影片，
+    // 幫魏導宣傳《臺灣三部曲》群眾集資而做的遊戲。
+    override val description = """
+        一週之內從想法到上架，
+        證明熱情比排程表更會跑編譯。
+    """
+
+    val storeRanking = listOf(
+        Rank(chart = "當紅遊戲或程式工具", place = 1),
+        Rank(chart = "熱門免費項目", place = 19)
+    )
+
+    override val openSource = true
+    override val status = Status.PUBLISHED
+}`
+  },
+  'FastPass.kt': {
+    icon: 'O', iconBg: '#b3ae60', crumb: 'androidWebsite > kotlin > tw.com.andyawd > projects > FastPass.kt',
+    preview: {
+      title: 'Preview — 快速實聯',
+      images: [
+        { url: 'https://www.andyawd.com.tw/assets/img/fastpass/fp01.png', alt: '快速實聯掃瞄頁' },
+        { url: 'https://www.andyawd.com.tw/assets/img/fastpass/fp04.png', alt: '快速實聯顏色主題頁' }
+      ],
+      notes: ['有次手上一堆東西，要單手操作真的不太容易，於是寫了這個掃描 QR Code 後自動寄出簡訊的程式。'],
+      links: [
+        { label: 'Google Play 下載', url: 'https://play.google.com/store/apps/details?id=tw.com.andyawd.fastpass' },
+        { label: 'GitHub 原始碼', url: 'https://github.com/AndyAWD/FastPass' }
+      ]
+    },
+    code: `package tw.com.andyawd.projects
+
+object FastPass : Project {
+
+    override val displayName = "快速實聯"
+    override val tagline = "掃一次 QR Code，簡訊自己寄出去"
+
+    // 有次手上一堆東西，要單手操作真的不太容易。
+    override val description = """
+        單手可以完成的事，
+        就不該需要第二隻手。
+    """
+
+    val features = listOf(
+        "掃描後自動送出簡訊",
+        "自訂顏色主題",
+        "無廣告、無追蹤"
+    )
+
+    override val openSource = true
+    override val status = Status.PUBLISHED
+}`
+  },
+  'SeeNote.kt': {
+    icon: 'O', iconBg: '#b3ae60', crumb: 'androidWebsite > kotlin > tw.com.andyawd > projects > SeeNote.kt',
+    preview: {
+      title: 'Preview — 看見筆記',
+      images: [],
+      notes: ['為了協助有視力障礙的家人設計的筆記應用程式：手勢放大、一鍵朗讀、自訂文字與背景顏色，結合 HackMD 雲端備份，支援 Markdown。目前製作中。'],
+      links: [{ label: 'GitHub 原始碼', url: 'https://github.com/AndyAWD/SeeNote' }]
+    },
+    code: `package tw.com.andyawd.projects
+
+object SeeNote : Project {
+
+    override val displayName = "看見筆記"
+    override val tagline = "為看不清楚的人寫的筆記本"
+
+    // 為了協助有視力障礙的家人設計的筆記應用程式。
+    override val description = """
+        無障礙不是功能清單上的一列，
+        它是這個 App 存在的理由。
+    """
+
+    val accessibility = listOf(
+        "手勢放大",
+        "一鍵朗讀",
+        "自訂文字與背景顏色",
+        "Markdown 語法支援",
+        "HackMD 雲端備份"
+    )
+
+    override val openSource = true
+    override val status = Status.IN_PROGRESS  // 目前製作中
+}`
+  },
+  'Contact.kt': {
+    icon: 'C', iconBg: '#c77dbb', crumb: 'androidWebsite > kotlin > tw.com.andyawd > Contact.kt',
+    preview: {
+      title: 'Preview — Contact',
+      images: [],
+      notes: ['有輔具、Android 開發或 GDG 社群相關的需求，歡迎直接來信。'],
+      links: [
+        { label: 'GitHub', url: 'https://github.com/AndyAWD' },
+        { label: 'LinkedIn', url: 'https://www.linkedin.com/in/weiting-dai' },
+        { label: 'Facebook', url: 'https://www.facebook.com/anandydy529' },
+        { label: 'GDG Kaohsiung — LinkedIn', url: 'https://www.linkedin.com/company/99178657' },
+        { label: 'GDG Kaohsiung — Facebook', url: 'https://www.facebook.com/groups/GDGKaohsiung' }
+      ]
+    },
+    code: `package tw.com.andyawd
+
+object Contact {
+
+    // 有相關需求歡迎與我連絡。
+    const val EMAIL = "hi@andyawd.com.tw"
+
+    val social = mapOf(
+        "GitHub" to "github.com/AndyAWD",
+        "LinkedIn" to "linkedin.com/in/weiting-dai",
+        "Facebook" to "facebook.com/anandydy529"
+    )
+
+    val community = mapOf(
+        "GDG Kaohsiung" to "linkedin.com/company/99178657",
+        "GDG Kaohsiung Group" to "facebook.com/groups/GDGKaohsiung"
+    )
+
+    fun replyTime() = "通常一到兩個工作天"
+}`
+  },
+  'build.gradle.kts': {
+    icon: 'G', iconBg: '#3ddc84', crumb: 'androidWebsite > Gradle Scripts > build.gradle.kts',
+    preview: null,
+    code: `plugins {
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+}
+
+android {
+    namespace = "tw.com.andyawd"
+    compileSdk = 35
+
+    defaultConfig {
+        minSdk = 24
+        versionName = "十年 Android，還在寫"
+    }
+}
+
+dependencies {
+    // 每天都在用的東西
+    implementation("kotlin:coroutines")
+    implementation("jetpack:compose")
+    implementation("jetpack:room")
+    implementation("jetpack:hilt")
+    implementation("kotlin:multiplatform")
+    implementation("android:accessibility-services")
+
+    // 不寫程式的時候
+    implementation("hobby:board-game-design")
+    implementation("community:gdg-kaohsiung")
+}`
+  }
+};
+
+const TREE = [
+  { d: 0, label: 'androidWebsite', icon: 'A', iconBg: '#3ddc84', color: '#dfe1e5' },
+  { d: 1, label: 'manifests', icon: '▸', iconBg: '#7a7e85', color: '#bcbec4' },
+  { d: 1, label: 'kotlin', icon: '▾', iconBg: '#56a8f5', color: '#bcbec4' },
+  { d: 2, label: 'tw.com.andyawd', icon: '▾', iconBg: '#7a7e85', color: '#bcbec4' },
+  { d: 3, file: 'AboutMe.kt' },
+  { d: 3, file: 'Contact.kt' },
+  { d: 3, label: 'projects', icon: '▾', iconBg: '#7a7e85', color: '#bcbec4' },
+  { d: 4, file: 'CostPerformanceCalculator.kt' },
+  { d: 4, file: 'PirateHegemonyOnline.kt' },
+  { d: 4, file: 'FastPass.kt' },
+  { d: 4, file: 'SeeNote.kt' },
+  { d: 1, label: 'res', icon: '▸', iconBg: '#7a7e85', color: '#bcbec4' },
+  { d: 1, label: 'Gradle Scripts', icon: '▾', iconBg: '#7a7e85', color: '#bcbec4' },
+  { d: 2, file: 'build.gradle.kts' }
+];
+
+class Component extends DCLogic {
+  state = { tabs: ['AboutMe.kt'], active: 'AboutMe.kt' };
+
+  open = (name) => this.setState(s => ({
+    tabs: s.tabs.includes(name) ? s.tabs : [...s.tabs, name],
+    active: name
+  }));
+
+  close = (name, e) => {
+    if (e && e.stopPropagation) e.stopPropagation();
+    this.setState(s => {
+      const tabs = s.tabs.filter(t => t !== name);
+      return { tabs, active: s.active === name ? (tabs[tabs.length - 1] || null) : s.active };
+    });
+  };
+
+  highlight(line) {
+    const t = line.trim();
+    if (t.startsWith('//') || t.startsWith('*') || t.startsWith('/*')) return [{ t: line, c: C.cm }];
+    if (!line.length) return [{ t: ' ', c: C.def }];
+    const re = new RegExp('("(?:[^"\\\\]|\\\\.)*")|(//.*$)|(@\\w+)|\\b(\\d+)\\b|\\b(' + KW + ')\\b|([A-Za-z_]\\w*)(?=\\()|\\b([A-Z][A-Za-z0-9_]*)\\b', 'g');
+    const out = [];
+    let last = 0, m;
+    while ((m = re.exec(line)) !== null) {
+      if (m.index > last) out.push({ t: line.slice(last, m.index), c: C.def });
+      const c = m[1] ? C.str : m[2] ? C.cm : m[3] ? C.an : m[4] ? C.num : m[5] ? C.kw : m[6] ? C.fn : C.ty;
+      out.push({ t: m[0], c });
+      last = m.index + m[0].length;
+    }
+    if (last < line.length) out.push({ t: line.slice(last), c: C.def });
+    return out.length ? out : [{ t: line, c: C.def }];
+  }
+
+  renderVals() {
+    const active = this.state.active;
+    const f = active ? FILES[active] : null;
+    const showPreview = this.props.showPreview ?? true;
+    const buildOpen = this.props.showBuildPanel ?? true;
+    const accent = this.props.accent ?? '#3ddc84';
+
+    const tree = TREE.map(n => {
+      const file = n.file ? FILES[n.file] : null;
+      return {
+        pad: (10 + n.d * 15) + 'px',
+        label: n.file || n.label,
+        icon: file ? file.icon : n.icon,
+        iconBg: file ? file.iconBg : (n.iconBg || 'transparent'),
+        color: n.file ? (active === n.file ? '#ffffff' : '#bcbec4') : n.color,
+        bg: active === n.file ? '#2e436e' : 'transparent',
+        onClick: n.file ? () => this.open(n.file) : () => {}
+      };
+    });
+
+    const tabs = this.state.tabs.map(name => ({
+      label: name,
+      icon: FILES[name].icon,
+      iconBg: FILES[name].iconBg,
+      color: active === name ? '#ffffff' : '#9da0a8',
+      bg: active === name ? '#1e1f22' : 'transparent',
+      underline: active === name ? accent : 'transparent',
+      onSelect: () => this.setState({ active: name }),
+      onClose: (e) => this.close(name, e)
+    }));
+
+    const lines = f ? f.code.split('\n').map((l, i) => ({ n: i + 1, tokens: this.highlight(l) })) : [];
+    const pv = f && f.preview;
+
+    return {
+      menus: ['File', 'Edit', 'View', 'Navigate', 'Code', 'Refactor', 'Build', 'Run', 'Tools', 'Git', 'Help'],
+      tree, tabs, lines,
+      fontSize: (this.props.fontSize ?? 13) + 'px',
+      hasFile: !!f,
+      isEmpty: !f,
+      breadcrumb: f ? f.crumb : '',
+      showPreviewPane: !!(pv && showPreview),
+      previewTitle: pv ? pv.title : '',
+      previewImages: pv ? pv.images : [],
+      previewNotes: pv ? pv.notes : [],
+      previewLinks: pv ? pv.links : [],
+      caret: f ? lines.length + ':1' : '—',
+      buildOpen,
+      toggleBuild: () => {},
+      hints: [
+        { label: 'Search Everywhere', key: 'Double Shift' },
+        { label: 'Go to File', key: 'Ctrl+Shift+N' },
+        { label: 'Recent Files', key: 'Ctrl+E' },
+        { label: 'Open a file from the tree', key: '← 左邊' }
+      ],
+      buildLog: [
+        { time: '09:41:02', text: '> Task :androidWebsite:compileKotlin', color: '#9da0a8' },
+        { time: '09:41:06', text: '> Task :androidWebsite:assembleDebug', color: '#9da0a8' },
+        { time: '09:41:07', text: 'BUILD SUCCESSFUL in 5s — 戴維廷 / Andy · 高雄 · Android Developer', color: accent },
+        { time: '09:41:07', text: '4 projects shipped, 1 in progress · GDG Kaohsiung Organizer', color: '#9da0a8' },
+        { time: '09:41:08', text: '// 目前正在開發 Android 免費輔具應用程式，有相關需求歡迎與我連絡。', color: '#7a7e85' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
