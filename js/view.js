@@ -34,12 +34,14 @@ export class IdeView {
 
     this.root.textContent = '';
     this.root.append(
-      el('a', { class: 'skip-link', href: '#code-region' }, s.a11y.skipToCode),
-      this.#topBar(s),
-      this.#main(s),
-      s.buildOpen ? this.#build(s) : null,
-      this.#statusBar(s),
-      el('div', { class: 'scrim', 'aria-hidden': 'true', onclick: () => this.vm.toggleDrawer(false) })
+      ...[
+        el('a', { class: 'skip-link', href: '#code-region' }, s.a11y.skipToCode),
+        this.#topBar(s),
+        this.#main(s),
+        s.buildOpen ? this.#build(s) : null,
+        this.#statusBar(s),
+        el('div', { class: 'scrim', 'aria-hidden': 'true', onclick: () => this.vm.toggleDrawer(false) })
+      ].filter((c) => c !== null && c !== undefined && c !== false)
     );
     this.root.className = 'ide' + (s.drawerOpen ? ' ide--drawer-open' : '');
 
