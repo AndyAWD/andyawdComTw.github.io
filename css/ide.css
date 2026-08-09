@@ -272,6 +272,26 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 }
 .tree__label--bright { color: var(--fg-bright); }
 
+/* --- 可拖拉的分隔線 ------------------------------------------------------ */
+
+.resizer {
+  flex: 0 0 6px;
+  margin: 0 -3px;          /* 跨在既有的 1px 邊框上，不影響原本的版面寬度 */
+  z-index: 5;
+  cursor: col-resize;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  touch-action: none;      /* 觸控拖拉時不要被瀏覽器捲動搶走 */
+  transition: background .12s ease;
+}
+.resizer:hover,
+.resizer:focus-visible,
+body.is-resizing .resizer:active { background: var(--accent); }
+.resizer:focus-visible { outline: none; }
+
+body.is-resizing { cursor: col-resize; user-select: none; }
+
 /* --- 編輯器區 ----------------------------------------------------------- */
 
 .editor {
@@ -629,12 +649,17 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
    ========================================================================== */
 
 @media (max-width: 899px) {
+  /* 頂部列要裝得下放大後的漢堡鈕與語言選單（抽屜的 top 也吃這個變數） */
+  :root { --topbar-h: 44px; }
+
   .ide {
     height: auto;
     min-height: 100vh;
     min-height: 100dvh;
     overflow: visible;
   }
+
+  .resizer { display: none; }
 
   .topbar { position: sticky; top: 0; z-index: 9; gap: 10px; }
   .topbar__menus,
@@ -671,6 +696,20 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   .ide--drawer-open .activity,
   .ide--drawer-open .sidebar { transform: translateX(0); }
   .ide--drawer-open .scrim { display: block; top: var(--topbar-h); }
+
+  /* 手指不像滑鼠精準：導覽用的選單列加大字級與可點高度 */
+  .sidebar__header { height: 40px; font-size: 14px; padding: 0 14px; }
+  .tree__node { height: 40px; gap: 10px; padding-right: 14px; }
+  .tree__label { font-size: 15px; }
+  .tree__icon { width: 18px; height: 18px; font-size: 11px; border-radius: 4px; }
+
+  .tabbar { height: 42px; }
+  .tab { font-size: 14px; gap: 10px; padding: 0 14px; }
+  .tab__icon { width: 16px; height: 16px; font-size: 10px; }
+  .tab__close { font-size: 17px; padding: 0 4px; }
+
+  .hamburger { font-size: 19px; padding: 6px 8px; }
+  .lang-select { font-size: 14px; padding: 6px 8px; }
 
   /* Preview 從右側改到程式碼下方 */
   .preview {

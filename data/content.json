@@ -10,13 +10,13 @@
     { "d": 1, "label": "manifests", "icon": "▸", "iconBg": "#7a7e85" },
     { "d": 1, "label": "kotlin", "icon": "▾", "iconBg": "#56a8f5" },
     { "d": 2, "label": "tw.com.andyawd", "icon": "▾", "iconBg": "#7a7e85" },
-    { "d": 3, "file": "AboutMe.kt" },
-    { "d": 3, "file": "Contact.kt" },
+    { "d": 3, "file": "AboutMe.kt", "labelKey": "tree.aboutMe" },
+    { "d": 3, "file": "Contact.kt", "labelKey": "tree.contact" },
     { "d": 3, "label": "projects", "icon": "▾", "iconBg": "#7a7e85" },
-    { "d": 4, "file": "CostPerformanceCalculator.kt" },
-    { "d": 4, "file": "PirateHegemonyOnline.kt" },
-    { "d": 4, "file": "FastPass.kt" },
-    { "d": 4, "file": "SeeNote.kt" },
+    { "d": 4, "file": "CostPerformanceCalculator.kt", "labelKey": "tree.cp" },
+    { "d": 4, "file": "PirateHegemonyOnline.kt", "labelKey": "tree.ph" },
+    { "d": 4, "file": "FastPass.kt", "labelKey": "tree.fp" },
+    { "d": 4, "file": "SeeNote.kt", "labelKey": "tree.sn" },
     { "d": 1, "label": "res", "icon": "▸", "iconBg": "#7a7e85" },
     { "d": 1, "label": "Gradle Scripts", "icon": "▾", "iconBg": "#7a7e85" },
     { "d": 2, "file": "build.gradle.kts" }
@@ -33,10 +33,7 @@
           { "url": "assets/img/about/about_1000.png", "altKey": "about.imgAlt" }
         ],
         "noteKeys": ["about.note"],
-        "links": [
-          { "url": "https://github.com/AndyAWD", "labelKey": "about.linkGithub" },
-          { "url": "https://www.linkedin.com/in/weiting-dai", "labelKey": "about.linkLinkedin" }
-        ]
+        "links": []
       }
     },
     "Contact.kt": {
@@ -89,7 +86,8 @@
         "links": [
           { "url": "https://play.google.com/store/apps/details?id=tw.com.andyawd.piratehegemonyonline", "labelKey": "common.linkPlay" },
           { "url": "https://github.com/AndyAWD/PirateHegemonyOnline", "labelKey": "common.linkSource" },
-          { "url": "https://www.youtube.com/watch?v=2PVRy0pgXnU", "labelKey": "ph.linkVideo" }
+          { "url": "https://www.youtube.com/watch?v=2PVRy0pgXnU", "labelKey": "ph.linkVideo" },
+          { "url": "https://www.youtube.com/watch?v=rWQ9uGQSWww", "labelKey": "ph.linkVideo2" }
         ]
       }
     },
@@ -159,6 +157,13 @@
     },
     "sidebar.title": { "zh-TW": "Android", "en": "Android", "ja": "Android" },
 
+    "tree.aboutMe": { "zh-TW": "關於我", "en": "About Me", "ja": "About Me" },
+    "tree.contact": { "zh-TW": "聯絡方式", "en": "Contact", "ja": "Contact" },
+    "tree.cp": { "zh-TW": "CP計算機", "en": "CP Calculator", "ja": "CP Calculator" },
+    "tree.ph": { "zh-TW": "海賊爭霸Online", "en": "Pirate Hegemony Online", "ja": "Pirate Hegemony Online" },
+    "tree.fp": { "zh-TW": "快速實聯", "en": "FastPass", "ja": "FastPass" },
+    "tree.sn": { "zh-TW": "看見筆記", "en": "SeeNote", "ja": "SeeNote" },
+
     "about.doc": {
       "zh-TW": "您好，我是戴維廷 / Andy。",
       "en": "Hi, I'm Wei-Ting Dai / Andy.",
@@ -215,16 +220,6 @@
       "en": "I live in Kaohsiung, Taiwan. I'm an Android Developer, a Google Developer Groups Kaohsiung Organizer, and a board game designer. Right now I'm building free Android assistive apps — feel free to reach out if that's something you need.",
       "ja": "台湾の高雄に住んでいます。Android デベロッパー、Google Developer Groups Kaohsiung のオーガナイザー、そしてボードゲームデザイナーです。現在は無料の Android 支援技術アプリを開発しています。関連するご相談はお気軽にご連絡ください。"
     },
-    "about.linkGithub": {
-      "zh-TW": "GitHub / AndyAWD",
-      "en": "GitHub / AndyAWD",
-      "ja": "GitHub / AndyAWD"
-    },
-    "about.linkLinkedin": {
-      "zh-TW": "LinkedIn / weiting-dai",
-      "en": "LinkedIn / weiting-dai",
-      "ja": "LinkedIn / weiting-dai"
-    },
 
     "contact.comment": {
       "zh-TW": "有相關需求歡迎與我連絡。",
@@ -246,8 +241,16 @@
       "en": "For anything about assistive technology, Android development, or the GDG community, just drop me an email.",
       "ja": "支援技術、Android 開発、GDG コミュニティに関するご相談は、メールでお気軽にどうぞ。"
     },
-    "contact.linkGithub": { "zh-TW": "GitHub", "en": "GitHub", "ja": "GitHub" },
-    "contact.linkLinkedin": { "zh-TW": "LinkedIn", "en": "LinkedIn", "ja": "LinkedIn" },
+    "contact.linkGithub": {
+      "zh-TW": "GitHub / AndyAWD",
+      "en": "GitHub / AndyAWD",
+      "ja": "GitHub / AndyAWD"
+    },
+    "contact.linkLinkedin": {
+      "zh-TW": "LinkedIn / weiting-dai",
+      "en": "LinkedIn / weiting-dai",
+      "ja": "LinkedIn / weiting-dai"
+    },
     "contact.linkFacebook": { "zh-TW": "Facebook", "en": "Facebook", "ja": "Facebook" },
     "contact.linkGdgLinkedin": {
       "zh-TW": "GDG Kaohsiung — LinkedIn",
@@ -380,9 +383,14 @@
       "ja": "とある動画を見たのをきっかけに、魏徳聖監督の『台湾三部作』クラウドファンディングを応援するために作ったゲームです。"
     },
     "ph.linkVideo": {
-      "zh-TW": "遊戲介紹影片",
-      "en": "Gameplay video",
-      "ja": "ゲーム紹介動画"
+      "zh-TW": "【老皮實況】😍海賊爭霸Online，下載就送S級火槍兵，評論區居然有人暴怒😂 | 洗腦手遊廣告大評測 #第五彈",
+      "en": "【老皮實況】😍海賊爭霸Online，下載就送S級火槍兵，評論區居然有人暴怒😂 | 洗腦手遊廣告大評測 #第五彈",
+      "ja": "【老皮實況】😍海賊爭霸Online，下載就送S級火槍兵，評論區居然有人暴怒😂 | 洗腦手遊廣告大評測 #第五彈"
+    },
+    "ph.linkVideo2": {
+      "zh-TW": "【手遊稽查】竟然真的有這遊戲？反正我很閒就來試玩「海賊爭霸」ㄤ賴！登入就送S級火槍兵XD",
+      "en": "【手遊稽查】竟然真的有這遊戲？反正我很閒就來試玩「海賊爭霸」ㄤ賴！登入就送S級火槍兵XD",
+      "ja": "【手遊稽查】竟然真的有這遊戲？反正我很閒就來試玩「海賊爭霸」ㄤ賴！登入就送S級火槍兵XD"
     },
 
     "fp.displayName": { "zh-TW": "快速實聯", "en": "FastPass", "ja": "クイック実聯" },
@@ -580,6 +588,16 @@
     },
     "a11y.language": { "zh-TW": "選擇語言", "en": "Select language", "ja": "言語を選択" },
     "a11y.codeEditor": { "zh-TW": "程式碼內容", "en": "Code content", "ja": "コードの内容" },
-    "a11y.previewPanel": { "zh-TW": "預覽面板", "en": "Preview panel", "ja": "プレビューパネル" }
+    "a11y.previewPanel": { "zh-TW": "預覽面板", "en": "Preview panel", "ja": "プレビューパネル" },
+    "a11y.resizeSidebar": {
+      "zh-TW": "調整檔案樹寬度",
+      "en": "Resize file tree",
+      "ja": "ファイルツリーの幅を調整"
+    },
+    "a11y.resizePreview": {
+      "zh-TW": "調整預覽面板寬度",
+      "en": "Resize preview panel",
+      "ja": "プレビューパネルの幅を調整"
+    }
   }
 }

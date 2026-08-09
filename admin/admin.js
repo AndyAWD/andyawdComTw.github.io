@@ -290,7 +290,12 @@ function renderTree() {
           onchange: (e) => { node.file = e.target.value; changed({ rerender: true }); }
         }, ...fileNames.map((n) => el('option', { value: n }, n)));
         s.value = node.file;
-        return el('div', { class: 'row__grow' }, s);
+        return el('div', { class: 'row__grow row__grow--split' }, s,
+          el('input', {
+            type: 'text', value: node.labelKey || '', placeholder: '顯示名稱 key（留空就顯示檔名）',
+            title: '樹上與分頁要顯示的文字 key，例如 tree.ph',
+            oninput: (e) => { node.labelKey = e.target.value.trim() || undefined; changed(); }
+          }));
       })()
       : el('div', { class: 'row__grow' },
         el('input', {
@@ -322,7 +327,8 @@ function renderTree() {
   panel.append(
     el('h2', {}, '檔案樹'),
     el('p', { class: 'hint' },
-      '這棵樹就是網站的主導覽。層級數字是縮排深度（0 是根節點），檔案節點點下去會開新分頁。'),
+      '這棵樹就是網站的主導覽。層級數字是縮排深度（0 是根節點），檔案節點點下去會開新分頁。'
+      + '檔案節點可以填「顯示名稱 key」，樹上與分頁就會改顯示該筆多語文字，留空則顯示檔名。'),
     el('div', { class: 'toolbar' },
       el('button', {
         type: 'button', class: 'btn',
@@ -582,6 +588,7 @@ function analyseKeys() {
     pv.noteKeys.forEach((k) => k && used.add(k));
     pv.links.forEach((l) => l.labelKey && used.add(l.labelKey));
   }
+  (content.tree || []).forEach((n) => n.labelKey && used.add(n.labelKey));
   (content.buildLog || []).forEach((b) => b.textKey && used.add(b.textKey));
   (content.hints || []).forEach((h) => {
     if (h.labelKey) used.add(h.labelKey);

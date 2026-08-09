@@ -3,6 +3,9 @@
  * 不做任何商業邏輯。
  */
 
+/** 拖拉面板時，中間程式碼區至少要留下的寬度 */
+const MIN_PANE = 280;
+
 /** 四個預設 accent 在亮色模式下的深色對應（白底對比 ≥ 5:1） */
 const ACCENT_ON_LIGHT = {
   '#3ddc84': '#12703b',
@@ -141,6 +144,7 @@ export class IdeView {
         el('span', {}, '▶'),
         el('span', {}, '⚑')),
       this.#sidebar(s),
+      this.#resizer('sidebar', s),
       this.#editor(s));
   }
 
@@ -191,6 +195,7 @@ export class IdeView {
       this.#tabBar(s),
       el('div', { class: 'workspace' },
         s.hasFile ? this.#codePane(s) : this.#empty(s),
+        s.showPreview ? this.#resizer('preview', s) : null,
         s.showPreview ? this.#preview(s) : null));
   }
 
@@ -270,6 +275,87 @@ export class IdeView {
               rel: 'noopener'
             }, l.label)))
         : null));
+  }
+
+  /* --- 可拖拉的分隔線 ------------------------------------------------------ */
+
+  /** @param {'sidebar'|'preview'} kind */
+  #resizer(kind, s) {
+    const bounds = s.panelBounds[kind];
+    const width = kind === 'sidebar' ? s.sidebarWidth : s.previewWidth;
+    return el('div', {
+      class: `resizer resizer--${kind}`,
+      role: 'separator',
+      'aria-orientation': 'vertical',
+      'aria-label': kind === 'sidebar' ? s.a11y.resizeSidebar : s.a11y.resizePreview,
+      'aria-valuenow': String(width),
+      'aria-valuemin': String(bounds.min),
+      'aria-valuemax': String(bounds.max),
+      tabindex: '0',
+      'data-focus-key': `resize:${kind}`,
+      onpointerdown: (e) => this.#onResizeStart(e, kind),
+      onkeydown: (e) => this.#onResizeKey(e, kind),
+      ondblclick: () => this.vm.resetPanelWidth(kind)
+    });
+  }
+
+  #onResizeStart(e, kind) {
+    if (e.button > 0 || isNarrow()) return;
+    e.preventDefault();
+
+    const node = e.currentTarget;
+    const startX = e.clientX;
+    const startW = kind === 'sidebar' ? this.vm.sidebarWidth : this.vm.previewWidth;
+    const dir = kind === 'sidebar' ? 1 : -1;
+
+    node.setPointerCapture(e.pointerId);
+    document.body.classList.add('is-resizing');
+
+    const move = (ev) => this.#setPanelWidth(kind, startW + dir * (ev.clientX - startX), node);
+    const end = () => {
+      node.removeEventListener('pointermove', move);
+      node.removeEventListener('pointerup', end);
+      node.removeEventListener('pointercancel', end);
+      document.body.classList.remove('is-resizing');
+      try {
+        node.releasePointerCapture(e.pointerId);
+      } catch (_) {
+        /* 指標已經放開了 */
+      }
+    };
+
+    node.addEventListener('pointermove', move);
+    node.addEventListener('pointerup', end);
+    node.addEventListener('pointercancel', end);
+  }
+
+  #onResizeKey(e, kind) {
+    if (e.key === 'Home') {
+      e.preventDefault();
+      this.vm.resetPanelWidth(kind);
+      return;
+    }
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+
+    e.preventDefault();
+    const dir = (kind === 'sidebar' ? 1 : -1) * (e.key === 'ArrowRight' ? 1 : -1);
+    const current = kind === 'sidebar' ? this.vm.sidebarWidth : this.vm.previewWidth;
+    this.#setPanelWidth(kind, current + dir * (e.shiftKey ? 64 : 16), e.currentTarget);
+  }
+
+  /**
+   * 寫入新寬度。拖拉期間不重繪整棵 DOM，直接改 CSS 變數，
+   * 並確保中間的程式碼區至少留 MIN_PANE 寬。
+   */
+  #setPanelWidth(kind, target, node) {
+    const current = kind === 'sidebar' ? this.vm.sidebarWidth : this.vm.previewWidth;
+    const pane = this.root.querySelector('.code-pane, .empty');
+    const slack = pane ? pane.getBoundingClientRect().width - MIN_PANE : Infinity;
+
+    const width = this.vm.setPanelWidth(kind, Math.min(target, current + slack));
+    document.documentElement.style.setProperty(
+      kind === 'sidebar' ? '--sidebar-width' : '--preview-width', `${width}px`);
+    node?.setAttribute('aria-valuenow', String(width));
   }
 
   #build(s) {
@@ -398,6 +484,11 @@ function setMeta(attr, name, content) {
     document.head.append(tag);
   }
   tag.setAttribute('content', content);
+}
+
+/** 手機版（抽屜排版）不提供拖拉 */
+function isNarrow() {
+  return window.matchMedia('(max-width: 899px)').matches;
 }
 
 function cssEscape(value) {

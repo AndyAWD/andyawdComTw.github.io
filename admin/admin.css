@@ -204,6 +204,8 @@ input[type='checkbox'] { accent-color: var(--accent); }
 }
 .row--tree { align-items: center; padding: 5px 8px; }
 .row__grow { flex: 1; min-width: 0; }
+.row__grow--split { display: flex; gap: 6px; }
+.row__grow--split > * { flex: 1; min-width: 0; }
 .row__actions { display: flex; gap: 4px; flex-shrink: 0; }
 
 .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
