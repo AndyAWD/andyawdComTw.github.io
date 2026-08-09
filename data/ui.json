@@ -1,0 +1,42 @@
+{
+  "theme": {
+    "accent": "#3ddc84",
+    "fontSize": 13,
+    "mode": "dark",
+    "allowToggle": true
+  },
+  "layout": {
+    "showPreview": true,
+    "showBuildPanel": true,
+    "sidebarWidth": 268,
+    "previewWidth": 340
+  },
+  "defaults": {
+    "lang": "zh-TW",
+    "openFiles": ["AboutMe.kt"],
+    "activeFile": "AboutMe.kt"
+  },
+  "menus": [
+    "File",
+    "Edit",
+    "View",
+    "Navigate",
+    "Code",
+    "Refactor",
+    "Build",
+    "Run",
+    "Tools",
+    "Git",
+    "Help"
+  ],
+  "statusBar": {
+    "encoding": "UTF-8",
+    "language": "Kotlin",
+    "branch": "main",
+    "memory": "1425 of 3500M"
+  },
+  "topBar": {
+    "user": "AndyAWD",
+    "device": "Nokia X30 · API 35"
+  }
+}
