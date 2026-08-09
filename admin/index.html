@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>AndyAWD — 網站內容編輯器</title>
+<link rel="icon" type="image/png" href="../assets/icon.png" />
+<link rel="stylesheet" href="admin.css" />
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('andyawd.theme');
+      if (t !== 'dark' && t !== 'light') {
+        t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar__logo" aria-hidden="true"></div>
+  <strong class="bar__title">網站內容編輯器</strong>
+  <span class="bar__hint">改完到「輸出 JSON」複製，貼回 <code>data/</code> 底下的檔案再 commit</span>
+  <div class="bar__spacer"></div>
+  <span id="dirty" class="badge badge--clean">尚未修改</span>
+  <button type="button" id="reload" class="btn">重新載入</button>
+  <button type="button" id="theme" class="btn" role="switch" aria-checked="false" aria-label="切換亮色／暗色主題">☀</button>
+</header>
+
+<div class="layout">
+  <main class="editor-col">
+    <nav class="tabs" role="tablist" aria-label="編輯區塊">
+      <button type="button" class="tabs__tab" role="tab" data-tab="ui">介面設定</button>
+      <button type="button" class="tabs__tab" role="tab" data-tab="tree">檔案樹</button>
+      <button type="button" class="tabs__tab" role="tab" data-tab="files">檔案內容</button>
+      <button type="button" class="tabs__tab" role="tab" data-tab="strings">字串表</button>
+      <button type="button" class="tabs__tab" role="tab" data-tab="output">輸出 JSON</button>
+    </nav>
+    <div id="panel" class="panel" role="tabpanel"></div>
+  </main>
+
+  <aside class="preview-col">
+    <div class="preview-col__head">
+      <span>即時預覽</span>
+      <div class="bar__spacer"></div>
+      <label class="inline"><input type="checkbox" id="live" checked /> 自動更新</label>
+      <button type="button" class="btn" id="viewport" data-mode="desktop">桌面</button>
+      <a class="btn" href="../index.html" target="_blank" rel="noopener">開新分頁</a>
+    </div>
+    <div class="preview-col__stage" id="stage">
+      <iframe id="preview" title="網站即時預覽" src="../index.html?preview=1"></iframe>
+    </div>
+  </aside>
+</div>
+
+<script type="module" src="admin.js"></script>
+</body>
+</html>
