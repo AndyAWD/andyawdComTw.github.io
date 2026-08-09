@@ -1,3 +1,4 @@
 node_modules/
 doc/tools/.cache/
 doc/tools/package-lock.json
+.idea/
